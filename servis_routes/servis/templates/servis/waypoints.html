@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список путевых точек</title>
+</head>
+<body>
+    {% if message %}
+    <h3> {{ message }} </h3>
+    {% else %}
+    <h3>Список путевых точек</h3>
+    <ul>
+        {% for point in way_points %}
+            <li>
+               Точка "{{ point.name }}" ({{ point.latitude }}: {{ point.longitude }})
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>

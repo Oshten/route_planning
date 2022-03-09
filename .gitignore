@@ -1,0 +1,4 @@
+/env/
+/building_route/db.sqlite3
+/servis_routes/db.sqlite3
+/waypoint_storage/db.sqlite3

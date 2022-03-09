@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список маршрутов</title>
+</head>
+<body>
+    <h3><a href="{% url 'list_waypoints' %} ">Список путевых точек</a></h3>
+    {% if message %}
+        <h3> {{ message }} </h3>
+    {% else %}
+        <h3> Список маршрутов </h3>
+        {% for route in routes %}
+            <ul>
+                <li>
+                    <a href=" {% url 'details_route' route.id %} "><b> {{ route.name }} </b></a><br>
+                    Начальная точка: {{ route.startpoint.name }}
+                    ( {{ route.startpoint.latitude }} : {{ route.startpoint.longitude }} ) <br>
+                    Конечная тоска: {{ route.endpoint.name }}
+                    ( {{ route.endpoint.latitude }} : {{ route.endpoint.longitude }} ) <br>
+                    <b> Автор маршрута: {{ route.author }} </b> <br>
+                </li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+    <b><a href="{% url 'create_new_route' %}">Создать новый маршрут</a></b>
+</body>
+</html>

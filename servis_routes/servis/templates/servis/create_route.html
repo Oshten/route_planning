@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать новый маршрут</title>
+</head>
+<body>
+    <h3>Создание нового маршрута</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ new_route.as_p }}
+        <button type="submit">Создать</button>
+    </form>
+</body>
+</html>

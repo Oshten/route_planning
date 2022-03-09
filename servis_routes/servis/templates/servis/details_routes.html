@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Детальное описание маршрута</title>
+</head>
+<body>
+    {% if message %}
+        <h3> {{ message }} </h3>
+    {% else %}
+        <h3> Детальное описание маршрута {{ route.name }} </h3>
+        <span>
+                <div style="overflow: hidden;">
+                    <div style="float: left; width: 190px;">
+                        <b><i>Начальная точка:</i></b>
+                    </div>
+                    <div style="float: left; width: 300px;">
+                        {{ route.startpoint.name }}
+                        ( {{ route.startpoint.latitude }} : {{ route.startpoint.longitude }} )
+                    </div>
+                </div>
+                <div style="overflow: hidden;">
+                    <div style="float: left; width: 190px;">
+                        <b><i>Промежуточные точки:</i></b>
+                    </div>
+                    <div style="float: left; width: 300px;">
+                        {% for point in route.waypoints %}
+                            {{ point.name }} ( {{ point.latitude }} : {{ point.longitude }} ) <br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div style="overflow: hidden;">
+                    <div style="float: left; width: 190px;">
+                        <b><i>Конечная точка:</i></b>
+                    </div>
+                    <div style="float: left; width: 300px;">
+                        {{ route.endpoint.name }}
+                        ( {{ route.endpoint.latitude }} : {{ route.endpoint.longitude }} )
+                    </div>
+                </div>
+            <b> Автор маршрута: </b> {{ route.author }} <br>
+            <b> Протяженность маршрута: {{ route.length_route }} км </b>
+            <br><br>
+        </span>
+    {% endif %}
+    <b><a href="{% url 'list_routes' %}">К списку маршрутов</a></b>
+</body>
+</html>
